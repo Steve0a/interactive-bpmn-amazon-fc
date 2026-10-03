@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design System · Interactive BPMN Website: Amazon FC</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF9900; --orange2:#E67E00; --dark:#131921; --navy:#232F3E;
+  --navy2:#1a2535; --bg:#0d1117; --surface:#161d27; --surface2:#1c2533;
+  --border:rgba(255,153,0,0.18); --line:rgba(255,255,255,0.08);
+  --text:#f0f0f0; --muted:#8899aa;
+  --c-start:#04D4A0; --c-driver:#37A9F5; --c-receiving:#2ECC71; --c-water:#E67E22;
+  --c-stower:#9B59B6; --c-picker:#17A2B8; --c-packer:#8BC34A; --c-slam:#F1C40F; --c-problem:#E74C3C;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:15px;line-height:1.6;
+  background-image:radial-gradient(rgba(255,153,0,0.06) 1px,transparent 1px);background-size:28px 28px;}
+h1,h2,h3,h4,.cond{font-family:'Barlow Condensed',sans-serif;letter-spacing:.3px;line-height:1.15}
+a{color:var(--orange)}
+#header{position:sticky;top:0;height:58px;background:rgba(13,17,23,0.92);backdrop-filter:blur(16px);
+  border-bottom:2px solid var(--orange);display:flex;align-items:center;gap:16px;padding:0 28px;z-index:100}
+.h-logo{width:38px;height:38px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.h-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#fff}
+.h-wordmark span{color:var(--orange)}
+.h-subtitle{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;border-left:1px solid rgba(255,255,255,0.12);padding-left:16px}
+.h-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.h-badge{background:var(--orange);color:var(--dark);font-size:10px;font-weight:800;padding:3px 10px;border-radius:12px;letter-spacing:1px;text-transform:uppercase}
+.h-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--muted);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;text-decoration:none}
+.h-btn:hover,.h-btn.active{background:rgba(255,153,0,0.2);color:var(--orange);border-color:rgba(255,153,0,0.4)}
+@media(max-width:700px){.h-subtitle{display:none}.h-right .h-btn:not(.active){display:none}}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding:28px 0 36px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.eyebrow{color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,5vw,54px);font-weight:900;margin:8px 0 12px}
+.hero h1 span{color:var(--orange)}
+.hero p{color:var(--muted);max-width:720px;font-size:17px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted)}
+.chip b{color:var(--text);font-weight:600}
+section{margin:0 0 44px}
+h2{font-size:28px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+h2 .n{background:var(--orange);color:var(--dark);font-size:14px;font-weight:900;border-radius:6px;padding:2px 8px}
+.lead{color:var(--muted);margin-bottom:18px}
+h3{font-size:19px;font-weight:700;margin:18px 0 8px}
+p+p{margin-top:10px}
+ul.clean{list-style:none}
+ul.clean li{padding-left:18px;position:relative;margin:6px 0}
+ul.clean li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;background:var(--orange);border-radius:2px}
+.card{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:14px;padding:20px 22px;position:relative;overflow:hidden}
+.card.stripe::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc,var(--orange))}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.card .k{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);font-weight:700;font-family:'Barlow Condensed',sans-serif}
+.card p,.card li{color:#c9d3dd;font-size:14px}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th{background:var(--navy);color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;text-align:left;padding:10px 14px}
+td{padding:10px 14px;border-top:1px solid var(--line);color:#c9d3dd;vertical-align:top}
+td:first-child{color:var(--text);font-weight:600}
+.pill{display:inline-block;font-size:11px;font-weight:800;padding:2px 9px;border-radius:10px;letter-spacing:.8px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+.p-must{background:rgba(255,153,0,.18);color:var(--orange)}
+.p-should{background:rgba(55,169,245,.16);color:var(--c-driver)}
+.p-could{background:rgba(136,153,170,.16);color:var(--muted)}
+.p-done{background:rgba(46,204,113,.16);color:var(--c-receiving)}
+.callout{border-left:4px solid var(--orange);background:rgba(255,153,0,.07);padding:14px 18px;border-radius:0 10px 10px 0;color:#d8dee6}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow .node{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--sc,var(--orange));border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600}
+.flow .arr{color:var(--orange);font-weight:900}
+.flow .gw{width:30px;height:30px;transform:rotate(45deg);border:2px solid var(--c-slam);display:inline-flex;align-items:center;justify-content:center;border-radius:4px}
+.flow .gw span{transform:rotate(-45deg);font-size:12px;color:var(--c-slam);font-weight:900}
+footer{border-top:1px solid var(--line);padding:24px 28px;color:var(--muted);font-size:13px;text-align:center}
+@media print{#header{position:static}body{background-image:none}}
+
+.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.sw .c{height:84px}
+.sw .i{padding:10px 12px}
+.sw .i b{display:block;font-size:14px}
+.sw .i code{font-size:12px;color:var(--muted)}
+.type-row{display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line)}
+.type-row .lbl{color:var(--muted);font-size:12px}
+.demo-btn{display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:1px;text-transform:uppercase;font-size:13px;border-radius:22px;padding:9px 18px;border:1px solid transparent}
+.b-primary{background:linear-gradient(135deg,var(--orange),var(--orange2));color:var(--dark)}
+.b-ghost{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);color:var(--muted)}
+.b-active{background:rgba(255,153,0,0.2);border-color:rgba(255,153,0,0.4);color:var(--orange)}
+.round{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--text);font-size:15px}
+.round.big{width:56px;height:56px;background:var(--orange);color:var(--dark);border:none;font-size:20px}
+.stepcard{width:200px;height:260px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,var(--surface2),var(--surface));overflow:hidden;display:flex;flex-direction:column}
+.stepcard .s{height:4px}
+.stepcard .img{flex:1;margin:10px;border-radius:8px;background:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0 10px,rgba(255,255,255,.06) 10px 11px);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px}
+.stepcard .t{padding:0 14px 16px}
+.stepcard .t .k{font-size:11px;color:var(--orange);letter-spacing:1.5px;font-weight:700;font-family:'Barlow Condensed',sans-serif}
+.stepcard .t h4{font-size:18px;font-weight:800;margin:2px 0}
+.stepcard .t p{font-size:12px;color:var(--muted)}
+.raci{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.raci>div{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:10px}
+.raci .l{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:var(--orange)}
+.raci .v{font-size:12px;color:#c9d3dd}
+.tool{display:inline-block;background:rgba(255,153,0,.08);border:1px solid var(--border);color:#e6d2b0;border-radius:14px;padding:3px 11px;font-size:12px;margin:3px}
+.do{border-top:3px solid var(--c-receiving)}.dont{border-top:3px solid var(--c-problem)}
+</style></head>
+<body>
+<header id="header"><div class="h-logo">📦</div><div class="h-wordmark">amazon <span>FC</span></div><div class="h-subtitle">Fulfillment Journey · Design System</div><div class="h-right"><a class="h-btn" href="prd.html">PRD</a><a class="h-btn" href="wireframes.html">Wireframes</a><a class="h-btn active" href="design-system.html">Design System</a><a class="h-btn" href="https://fulfillmentcenterjourney.com">Live Site ↗</a></div></header>
+<div class="wrap">
+<div class="hero">
+  <div class="eyebrow">Design System · Style Guide</div>
+  <h1>Visual Language of the <span>FC Journey</span></h1>
+  <p>The colors, type, components and motion used on the live site. Use this guide to keep new screens, slides and documents consistent with the product.</p>
+  <div class="meta"><div class="chip">Theme <b>Dark · Warehouse Night</b></div><div class="chip">Fonts <b>Barlow · Barlow Condensed</b></div><div class="chip">Accent <b>#FF9900</b></div></div>
+</div>
+
+<section>
+<h2><span class="n">01</span>Core Palette</h2>
+<p class="lead">A dark navy base keeps the role illustrations and the orange accent in front.</p>
+<div class="grid g4">
+  <div class="sw"><div class="c" style="background:#FF9900"></div><div class="i"><b>Orange</b><code>--orange #FF9900</code></div></div>
+  <div class="sw"><div class="c" style="background:#E67E00"></div><div class="i"><b>Orange Deep</b><code>#E67E00 · gradients</code></div></div>
+  <div class="sw"><div class="c" style="background:#0d1117"></div><div class="i"><b>Background</b><code>--bg #0d1117</code></div></div>
+  <div class="sw"><div class="c" style="background:#161d27"></div><div class="i"><b>Surface</b><code>--surface #161d27</code></div></div>
+  <div class="sw"><div class="c" style="background:#232F3E"></div><div class="i"><b>Navy</b><code>--navy #232F3E</code></div></div>
+  <div class="sw"><div class="c" style="background:#131921"></div><div class="i"><b>Dark</b><code>--dark #131921 · text on orange</code></div></div>
+  <div class="sw"><div class="c" style="background:#f0f0f0"></div><div class="i"><b>Text</b><code>--text #f0f0f0</code></div></div>
+  <div class="sw"><div class="c" style="background:#8899aa"></div><div class="i"><b>Muted</b><code>--muted #8899aa</code></div></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">02</span>Role Stripe Colors</h2>
+<p class="lead">Each workflow role has its own stripe color, used on card tops, panels and progress markers.</p>
+<div class="grid g4">
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#04D4A0,#067D62)"></div><div class="i"><b>Start Event</b><code>#04D4A0 → #067D62</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#37A9F5,#1a5c9a)"></div><div class="i"><b>Driver · Shipping</b><code>#37A9F5 → #1a5c9a</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#2ECC71,#1a6a3a)"></div><div class="i"><b>Receiving</b><code>#2ECC71 → #1a6a3a</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#E67E22,#8a4a10)"></div><div class="i"><b>Water Spider</b><code>#E67E22 → #8a4a10</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#9B59B6,#5a1a8a)"></div><div class="i"><b>Stower</b><code>#9B59B6 → #5a1a8a</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#17A2B8,#0a5a6a)"></div><div class="i"><b>Picker</b><code>#17A2B8 → #0a5a6a</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#8BC34A,#3a6a10)"></div><div class="i"><b>Packer</b><code>#8BC34A → #3a6a10</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#F1C40F,#8a6a00)"></div><div class="i"><b>SLAM · Gateways</b><code>#F1C40F → #8a6a00</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#E74C3C,#8a1a1a)"></div><div class="i"><b>Problem Solver</b><code>#E74C3C → #8a1a1a</code></div></div>
+  <div class="sw"><div class="c" style="background:linear-gradient(90deg,#E74C3C,#C0392B)"></div><div class="i"><b>End Event</b><code>#E74C3C → #C0392B</code></div></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">03</span>Typography</h2>
+<p class="lead">Barlow Condensed for headings and labels; Barlow for reading text.</p>
+<div class="card">
+  <div class="type-row" style="border-top:none"><div class="lbl">Display · Condensed 900 · 48</div><div class="cond" style="font-size:48px;font-weight:900">amazon <span style="color:var(--orange)">FC</span></div></div>
+  <div class="type-row"><div class="lbl">Card title · Condensed 800 · 18</div><div class="cond" style="font-size:18px;font-weight:800">Receiving Inventory</div></div>
+  <div class="type-row"><div class="lbl">Eyebrow · Condensed 700 · 11 · +1.5 · CAPS</div><div class="cond" style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--orange)">STEP 2</div></div>
+  <div class="type-row"><div class="lbl">Subtitle · Barlow 600 · 11 · +1.5 · CAPS</div><div style="font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--muted)">FULFILLMENT CENTER · END-TO-END WORKFLOW</div></div>
+  <div class="type-row"><div class="lbl">Body · Barlow 400 · 14–15</div><div style="font-size:15px;color:#c9d3dd">Associates unload trailers using pallet jacks and forklifts. Items are staged, counted, and routed for preparation.</div></div>
+  <div class="type-row"><div class="lbl">Meta · Barlow 400 · 12 · Muted</div><div style="font-size:12px;color:var(--muted)">Warehouse Associate (Receiving)</div></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">04</span>Components</h2>
+<div class="grid g2">
+  <div class="card"><div class="k">Buttons</div><h4>Pill buttons</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0">
+      <span class="demo-btn b-primary">✦ Story Mode</span><span class="demo-btn b-active">Flow View</span><span class="demo-btn b-ghost">Story Mode</span>
+      <span class="h-badge" style="align-self:center">Interactive</span></div>
+    <p>Primary = orange gradient on dark text. Active = 20% orange tint. Ghost = 6% white.</p></div>
+  <div class="card"><div class="k">Playbar</div><h4>Round controls</h4>
+    <div style="display:flex;gap:10px;align-items:center;margin:12px 0"><span class="round">↺</span><span class="round">⏮</span><span class="round big">▶</span><span class="round">⏭</span><span class="pill p-must" style="padding:4px 9px">1×</span></div>
+    <p>44px tap targets; the play button is 56px and filled orange.</p></div>
+  <div class="card" style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start"><div><div class="k">Step card</div><h4>200 × 260</h4><p style="max-width:220px">Radius 14, 4px role stripe, illustration area, eyebrow + title + role. Hover lifts the card 4px and adds an orange glow.</p></div>
+    <div class="stepcard"><div class="s" style="background:linear-gradient(90deg,#17A2B8,#0a5a6a)"></div><div class="img">Role illustration</div><div class="t"><div class="k">STEP 5</div><h4>Picking Items</h4><p>Picker</p></div></div></div>
+  <div class="card"><div class="k">Detail panel</div><h4>RACI &amp; tool chips</h4>
+    <div class="raci" style="margin:12px 0"><div><div class="l">R</div><div class="v">Picker</div></div><div><div class="l">A</div><div class="v">Area Manager</div></div><div><div class="l">C</div><div class="v">Process Assistant</div></div><div><div class="l">I</div><div class="v">Operations Manager</div></div></div>
+    <span class="tool">Picking screens</span><span class="tool">Pick-to-light</span><span class="tool">Robotic pods</span><span class="tool">Totes &amp; chutes</span></div>
+  <div class="card"><div class="k">BPMN elements</div><h4>Events, gateways, flows</h4>
+    <div style="display:flex;gap:14px;align-items:center;margin:14px 0;flex-wrap:wrap">
+      <span style="width:34px;height:34px;border-radius:50%;background:#04D4A0;display:inline-flex;align-items:center;justify-content:center;color:var(--dark);font-weight:900">▶</span>
+      <span style="flex:0 0 50px;border-top:2px dashed var(--orange)"></span>
+      <span style="width:30px;height:30px;transform:rotate(45deg);border:2px solid #F1C40F;border-radius:5px;display:inline-flex;align-items:center;justify-content:center"><b style="transform:rotate(-45deg);color:#F1C40F">?</b></span>
+      <span style="flex:0 0 50px;border-top:2px dashed var(--orange)"></span>
+      <span style="width:34px;height:34px;border-radius:50%;background:#E74C3C;border:3px solid #C0392B;display:inline-flex;align-items:center;justify-content:center;font-weight:900">■</span></div>
+    <p>Start = green circle · Gateway = yellow diamond · End = red circle with thick border · Sequence flow = orange dashed arrow.</p></div>
+  <div class="card"><div class="k">Header</div><h4>Sticky top bar</h4>
+    <div style="margin:12px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden"><div style="height:46px;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:2px solid var(--orange);background:rgba(13,17,23,.92)"><span class="h-logo" style="width:28px;height:28px;font-size:15px">📦</span><span class="h-wordmark" style="font-size:16px">amazon <span>FC</span></span><span style="margin-left:auto" class="h-badge">Interactive</span></div></div>
+    <p>58px tall, 92% opacity with a 16px blur, and a 2px orange bottom border.</p></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">05</span>Spacing, Shape &amp; Motion</h2>
+<table>
+<tr><th>Token</th><th>Value</th><th>Use</th></tr>
+<tr><td>Card size</td><td>200 × 260 px</td><td>Flow View step cards</td></tr>
+<tr><td>Flow gap</td><td>56 px</td><td>Space between cards (holds the arrow)</td></tr>
+<tr><td>Radius</td><td>8 · 12 · 14 · 20+ px</td><td>Logo/inputs · panels · cards · pills</td></tr>
+<tr><td>Border</td><td>rgba(255,153,0,.18)</td><td>Orange-tinted hairlines on panels</td></tr>
+<tr><td>Header</td><td>58 px, blur 16 px</td><td>Sticky top bar</td></tr>
+<tr><td>Transition</td><td>0.15s ease</td><td>Hover and active states</td></tr>
+<tr><td>Hover lift</td><td>translateY(-4px) + orange glow</td><td>Step cards, Story Mode button (scale 1.05)</td></tr>
+<tr><td>Background</td><td>Three.js particles + 28 px dot grid</td><td>Ambient warehouse depth</td></tr>
+</table>
+</section>
+
+<section>
+<h2><span class="n">06</span>Usage Rules</h2>
+<div class="grid g2">
+  <div class="card do"><h4>Do</h4><ul class="clean"><li>Use orange for one main action or highlight per area</li><li>Keep role colors tied to their role everywhere</li><li>Use condensed caps for labels and plain Barlow for sentences</li><li>Keep text light (#f0f0f0 / #c9d3dd) on dark surfaces</li></ul></div>
+  <div class="card dont"><h4>Don't</h4><ul class="clean"><li>Put orange text on a yellow (SLAM) background</li><li>Use role colors for decoration with no meaning</li><li>Set long paragraphs in Barlow Condensed</li><li>Use Amazon logos; the wordmark is text only</li></ul></div>
+</div>
+</section>
+</div>
+<footer>Interactive BPMN Website: Amazon FC · Design System · Educational project, not affiliated with Amazon · <a href="https://fulfillmentcenterjourney.com">fulfillmentcenterjourney.com</a></footer>
+</body></html>

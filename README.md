@@ -32,12 +32,18 @@ Truck Driver → Receiving → Water Spider → Stower → Picker → Packer →
 | Deployment | Cloudflare Workers, custom domain and DNS setup |
 | AI-assisted building | Structured prompting with ChatGPT, Claude, and Perplexity |
 
+## Product docs
+Same design language as the live site. Download a file and open it in a browser:
+- [PRD](docs/prd.html): problem, goals, users, requirements, metrics, milestones
+- [Wireframes](docs/wireframes.html): Flow View, Step Detail Panel, Story Mode, Mobile
+- [Design System](docs/design-system.html): colors, type, components, spacing, usage rules
+
 ## Repository structure
 ```
 interactive-bpmn-amazon-fc/
 ├── site/index.html   # The live website
 ├── assets/           # Screenshots
-└── docs/             # Case study, prompts, and build workflow
+└── docs/             # PRD, wireframes, design system, case study, build workflow
 ```
 
 ## Run locally

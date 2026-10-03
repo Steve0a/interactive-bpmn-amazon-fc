@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRD · Interactive BPMN Website: Amazon FC</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF9900; --orange2:#E67E00; --dark:#131921; --navy:#232F3E;
+  --navy2:#1a2535; --bg:#0d1117; --surface:#161d27; --surface2:#1c2533;
+  --border:rgba(255,153,0,0.18); --line:rgba(255,255,255,0.08);
+  --text:#f0f0f0; --muted:#8899aa;
+  --c-start:#04D4A0; --c-driver:#37A9F5; --c-receiving:#2ECC71; --c-water:#E67E22;
+  --c-stower:#9B59B6; --c-picker:#17A2B8; --c-packer:#8BC34A; --c-slam:#F1C40F; --c-problem:#E74C3C;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:15px;line-height:1.6;
+  background-image:radial-gradient(rgba(255,153,0,0.06) 1px,transparent 1px);background-size:28px 28px;}
+h1,h2,h3,h4,.cond{font-family:'Barlow Condensed',sans-serif;letter-spacing:.3px;line-height:1.15}
+a{color:var(--orange)}
+#header{position:sticky;top:0;height:58px;background:rgba(13,17,23,0.92);backdrop-filter:blur(16px);
+  border-bottom:2px solid var(--orange);display:flex;align-items:center;gap:16px;padding:0 28px;z-index:100}
+.h-logo{width:38px;height:38px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.h-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#fff}
+.h-wordmark span{color:var(--orange)}
+.h-subtitle{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;border-left:1px solid rgba(255,255,255,0.12);padding-left:16px}
+.h-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.h-badge{background:var(--orange);color:var(--dark);font-size:10px;font-weight:800;padding:3px 10px;border-radius:12px;letter-spacing:1px;text-transform:uppercase}
+.h-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--muted);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;text-decoration:none}
+.h-btn:hover,.h-btn.active{background:rgba(255,153,0,0.2);color:var(--orange);border-color:rgba(255,153,0,0.4)}
+@media(max-width:700px){.h-subtitle{display:none}.h-right .h-btn:not(.active){display:none}}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding:28px 0 36px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.eyebrow{color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,5vw,54px);font-weight:900;margin:8px 0 12px}
+.hero h1 span{color:var(--orange)}
+.hero p{color:var(--muted);max-width:720px;font-size:17px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted)}
+.chip b{color:var(--text);font-weight:600}
+section{margin:0 0 44px}
+h2{font-size:28px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+h2 .n{background:var(--orange);color:var(--dark);font-size:14px;font-weight:900;border-radius:6px;padding:2px 8px}
+.lead{color:var(--muted);margin-bottom:18px}
+h3{font-size:19px;font-weight:700;margin:18px 0 8px}
+p+p{margin-top:10px}
+ul.clean{list-style:none}
+ul.clean li{padding-left:18px;position:relative;margin:6px 0}
+ul.clean li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;background:var(--orange);border-radius:2px}
+.card{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:14px;padding:20px 22px;position:relative;overflow:hidden}
+.card.stripe::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc,var(--orange))}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.card .k{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);font-weight:700;font-family:'Barlow Condensed',sans-serif}
+.card p,.card li{color:#c9d3dd;font-size:14px}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th{background:var(--navy);color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;text-align:left;padding:10px 14px}
+td{padding:10px 14px;border-top:1px solid var(--line);color:#c9d3dd;vertical-align:top}
+td:first-child{color:var(--text);font-weight:600}
+.pill{display:inline-block;font-size:11px;font-weight:800;padding:2px 9px;border-radius:10px;letter-spacing:.8px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+.p-must{background:rgba(255,153,0,.18);color:var(--orange)}
+.p-should{background:rgba(55,169,245,.16);color:var(--c-driver)}
+.p-could{background:rgba(136,153,170,.16);color:var(--muted)}
+.p-done{background:rgba(46,204,113,.16);color:var(--c-receiving)}
+.callout{border-left:4px solid var(--orange);background:rgba(255,153,0,.07);padding:14px 18px;border-radius:0 10px 10px 0;color:#d8dee6}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow .node{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--sc,var(--orange));border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600}
+.flow .arr{color:var(--orange);font-weight:900}
+.flow .gw{width:30px;height:30px;transform:rotate(45deg);border:2px solid var(--c-slam);display:inline-flex;align-items:center;justify-content:center;border-radius:4px}
+.flow .gw span{transform:rotate(-45deg);font-size:12px;color:var(--c-slam);font-weight:900}
+footer{border-top:1px solid var(--line);padding:24px 28px;color:var(--muted);font-size:13px;text-align:center}
+@media print{#header{position:static}body{background-image:none}}
+</style></head>
+<body>
+<header id="header"><div class="h-logo">📦</div><div class="h-wordmark">amazon <span>FC</span></div><div class="h-subtitle">Fulfillment Journey · Product Requirements</div><div class="h-right"><a class="h-btn active" href="prd.html">PRD</a><a class="h-btn" href="wireframes.html">Wireframes</a><a class="h-btn" href="design-system.html">Design System</a><a class="h-btn" href="https://fulfillmentcenterjourney.com">Live Site ↗</a></div></header>
+<div class="wrap">
+<div class="hero">
+  <div class="eyebrow">Product Requirements Document</div>
+  <h1>Interactive BPMN Website: <span>Amazon Fulfillment Center</span></h1>
+  <p>A web experience that maps how a package moves through an Amazon Fulfillment Center, from the inbound truck to the outbound carrier. Each step shows the role, its tools, its handoffs, and who is responsible.</p>
+  <div class="meta">
+    <div class="chip">Owner <b>Steve Okyere Oduro-Amoyaw</b></div>
+    <div class="chip">Context <b>Extern Project 308</b></div>
+    <div class="chip">Version <b>v2.0 · Live</b></div>
+    <div class="chip">Updated <b>Oct 3, 2026</b></div>
+    <div class="chip">Live <b><a href="https://fulfillmentcenterjourney.com">fulfillmentcenterjourney.com</a></b></div>
+  </div>
+</div>
+
+<section>
+<h2><span class="n">01</span>Problem</h2>
+<p class="lead">Fulfillment work is hard to picture from the outside.</p>
+<div class="grid g3">
+  <div class="card stripe" style="--sc:var(--c-problem)"><div class="k">Pain point</div><h4>Text-heavy process docs</h4><p>Written SOPs and org charts don't show how roles hand work to each other in real time.</p></div>
+  <div class="card stripe" style="--sc:var(--c-water)"><div class="k">Pain point</div><h4>Feedback lacks context</h4><p>Worker reviews mention pressure points, like rate, schedule and physical load, but readers can't see where those happen in the flow.</p></div>
+  <div class="card stripe" style="--sc:var(--c-driver)"><div class="k">Pain point</div><h4>Static BPMN is dense</h4><p>Standard BPMN diagrams are accurate but intimidating for non-specialists and on small screens.</p></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">02</span>Goals &amp; Non-Goals</h2>
+<div class="grid g2">
+  <div class="card stripe" style="--sc:var(--c-receiving)"><h4>Goals</h4><ul class="clean">
+    <li>Explain the full FC workflow in under 3 minutes</li>
+    <li>Show role, tools, collaborators and RACI for each step</li>
+    <li>Make BPMN concepts (events, tasks, gateways) approachable</li>
+    <li>Give context for the Extern 308 worker-feedback analysis</li>
+    <li>Ship as one lightweight, shareable link</li></ul></div>
+  <div class="card stripe" style="--sc:var(--muted)"><h4>Non-goals</h4><ul class="clean">
+    <li>Real-time or internal Amazon operational data</li>
+    <li>User accounts, logins, or saved state</li>
+    <li>A full BPMN 2.0 editor</li>
+    <li>Representing any specific FC site exactly</li></ul></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">03</span>Target Users</h2>
+<div class="grid g4">
+  <div class="card"><div class="k">Primary</div><h4>Extern reviewers</h4><p>Need a quick, clear view of the FC process behind the analysis.</p></div>
+  <div class="card"><div class="k">Primary</div><h4>Recruiters &amp; hiring managers</h4><p>Want to see process thinking and build quality in under a minute.</p></div>
+  <div class="card"><div class="k">Secondary</div><h4>Students &amp; new associates</h4><p>Learning how warehouse roles connect.</p></div>
+  <div class="card"><div class="k">Secondary</div><h4>Ops &amp; BA learners</h4><p>Studying BPMN, RACI, and process improvement.</p></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">04</span>Process Scope</h2>
+<p class="lead">BPMN elements represented in the main flow.</p>
+<div class="flow">
+  <div class="node" style="--sc:var(--c-start)">▶ Truck Arrives</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-driver)">Truck Delivery</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-receiving)">Receiving</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-water)">Preparation</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-stower)">Stowing</div><span class="arr">→</span>
+  <div class="gw"><span>?</span></div><span class="cond" style="font-size:13px;color:var(--c-slam)">Item Valid?</span><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-picker)">Picking</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-packer)">Packing</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-slam)">SLAM</div><span class="arr">→</span>
+  <div class="gw"><span>?</span></div><span class="cond" style="font-size:13px;color:var(--c-slam)">Weight OK?</span><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-driver)">Shipping</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-problem)">■ Package Shipped</div>
+</div>
+<p style="margin-top:14px;color:var(--muted);font-size:14px">Exception path: when a gateway fails, the item goes to the <b style="color:var(--c-problem)">Problem Solver</b> (damaged items, missing labels, weight mismatches, orphaned inventory).</p>
+</section>
+
+<section>
+<h2><span class="n">05</span>Functional Requirements</h2>
+<table>
+<tr><th>ID</th><th>Requirement</th><th>Priority</th><th>Status</th></tr>
+<tr><td>FR-01</td><td>Horizontal Flow View with a card for each step: step number, title, role, color stripe, illustration</td><td><span class="pill p-must">Must</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-02</td><td>Clicking a card opens a detail panel with the description, tools, collaborators and RACI (where defined)</td><td><span class="pill p-must">Must</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-03</td><td>BPMN start/end events and decision gateways (Item Valid?, Weight OK?)</td><td><span class="pill p-must">Must</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-04</td><td>Playbar with restart, previous, play/pause, next, progress label and speed toggle</td><td><span class="pill p-must">Must</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-05</td><td>Story Mode: full-screen guided walkthrough with prev/next and step dots</td><td><span class="pill p-should">Should</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-06</td><td>Animated package token that travels along the flow during playback</td><td><span class="pill p-should">Should</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-07</td><td>Three.js background scene with ambient warehouse particles</td><td><span class="pill p-could">Could</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-08</td><td>Drag/scroll to pan the flow; scroll hint on first load</td><td><span class="pill p-should">Should</span></td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>FR-09</td><td>Worker-feedback overlay: tag steps with themes (Pay, Schedule &amp; Workload, Management)</td><td><span class="pill p-could">Could</span></td><td><span class="pill p-could">Planned</span></td></tr>
+</table>
+</section>
+
+<section>
+<h2><span class="n">06</span>Non-Functional Requirements</h2>
+<div class="grid g3">
+  <div class="card"><div class="k">Performance</div><h4>Single file</h4><p>One self-contained HTML file (~875 KB) with embedded WebP images and no build step.</p></div>
+  <div class="card"><div class="k">Responsive</div><h4>Desktop first, mobile friendly</h4><p>Header collapses below 600px; flow scrolls by touch.</p></div>
+  <div class="card"><div class="k">Hosting</div><h4>Edge delivered</h4><p>Cloudflare Workers static assets, HTTPS, custom domain with www.</p></div>
+  <div class="card"><div class="k">Accessibility</div><h4>Readable contrast</h4><p>Light text on dark navy, orange for emphasis only, and keyboard-reachable controls.</p></div>
+  <div class="card"><div class="k">Compliance</div><h4>Educational use</h4><p>Not affiliated with Amazon. Public information only; no personal data.</p></div>
+  <div class="card"><div class="k">Maintainability</div><h4>Data-driven steps</h4><p>Steps are defined in one <code>STEPS</code> object, so adding a role is a data change.</p></div>
+</div>
+</section>
+
+<section>
+<h2><span class="n">07</span>Success Metrics</h2>
+<table>
+<tr><th>Metric</th><th>Target</th><th>How measured</th></tr>
+<tr><td>Comprehension</td><td>Viewer can name 5+ FC roles in order after one walkthrough</td><td>Informal test with 5 classmates</td></tr>
+<tr><td>Time to understand</td><td>Full Story Mode run in under 3 minutes</td><td>Timed walkthrough</td></tr>
+<tr><td>Engagement</td><td>Majority of visitors open at least one detail panel</td><td>Cloudflare Web Analytics (to enable)</td></tr>
+<tr><td>Reliability</td><td>Page loads over HTTPS on root and www</td><td>Manual check and Cloudflare status</td></tr>
+</table>
+</section>
+
+<section>
+<h2><span class="n">08</span>Milestones</h2>
+<table>
+<tr><th>Phase</th><th>Deliverable</th><th>Status</th></tr>
+<tr><td>1 · Ideation</td><td>Map FC departments and BPMN elements</td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>2 · Structure</td><td>JSON model of steps, roles, connections</td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>3 · Build</td><td>Interactive HTML, Flow View, detail panel, RACI</td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>4 · Refine</td><td>Story Mode, playbar, Three.js scene, illustrations</td><td><span class="pill p-done">Done</span></td></tr>
+<tr><td>5 · Publish</td><td>Cloudflare deploy + fulfillmentcenterjourney.com</td><td><span class="pill p-done">Done · Oct 3</span></td></tr>
+<tr><td>6 · Extend</td><td>Feedback-theme overlay and analytics</td><td><span class="pill p-could">Next</span></td></tr>
+</table>
+</section>
+
+<section>
+<h2><span class="n">09</span>Risks &amp; Assumptions</h2>
+<div class="callout"><ul class="clean">
+  <li><b>Accuracy:</b> Role details come from public sources and may differ across FC sites.</li>
+  <li><b>Brand:</b> Amazon naming and colors are used for education only, with a clear non-affiliation note.</li>
+  <li><b>File size:</b> Embedded images keep it to one file but make it heavier; split assets if the site grows.</li>
+  <li><b>Sample limits:</b> The linked feedback analysis uses 124 Glassdoor reviews and 8 YouTube videos, so read platform differences with care.</li>
+</ul></div>
+</section>
+</div>
+<footer>Interactive BPMN Website: Amazon FC · PRD · Educational project, not affiliated with Amazon · <a href="https://fulfillmentcenterjourney.com">fulfillmentcenterjourney.com</a></footer>
+</body></html>

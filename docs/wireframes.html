@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wireframes · Interactive BPMN Website: Amazon FC</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#FF9900; --orange2:#E67E00; --dark:#131921; --navy:#232F3E;
+  --navy2:#1a2535; --bg:#0d1117; --surface:#161d27; --surface2:#1c2533;
+  --border:rgba(255,153,0,0.18); --line:rgba(255,255,255,0.08);
+  --text:#f0f0f0; --muted:#8899aa;
+  --c-start:#04D4A0; --c-driver:#37A9F5; --c-receiving:#2ECC71; --c-water:#E67E22;
+  --c-stower:#9B59B6; --c-picker:#17A2B8; --c-packer:#8BC34A; --c-slam:#F1C40F; --c-problem:#E74C3C;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:15px;line-height:1.6;
+  background-image:radial-gradient(rgba(255,153,0,0.06) 1px,transparent 1px);background-size:28px 28px;}
+h1,h2,h3,h4,.cond{font-family:'Barlow Condensed',sans-serif;letter-spacing:.3px;line-height:1.15}
+a{color:var(--orange)}
+#header{position:sticky;top:0;height:58px;background:rgba(13,17,23,0.92);backdrop-filter:blur(16px);
+  border-bottom:2px solid var(--orange);display:flex;align-items:center;gap:16px;padding:0 28px;z-index:100}
+.h-logo{width:38px;height:38px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.h-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:#fff}
+.h-wordmark span{color:var(--orange)}
+.h-subtitle{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;border-left:1px solid rgba(255,255,255,0.12);padding-left:16px}
+.h-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.h-badge{background:var(--orange);color:var(--dark);font-size:10px;font-weight:800;padding:3px 10px;border-radius:12px;letter-spacing:1px;text-transform:uppercase}
+.h-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--muted);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;text-decoration:none}
+.h-btn:hover,.h-btn.active{background:rgba(255,153,0,0.2);color:var(--orange);border-color:rgba(255,153,0,0.4)}
+@media(max-width:700px){.h-subtitle{display:none}.h-right .h-btn:not(.active){display:none}}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 28px 80px}
+.hero{padding:28px 0 36px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.eyebrow{color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(34px,5vw,54px);font-weight:900;margin:8px 0 12px}
+.hero h1 span{color:var(--orange)}
+.hero p{color:var(--muted);max-width:720px;font-size:17px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted)}
+.chip b{color:var(--text);font-weight:600}
+section{margin:0 0 44px}
+h2{font-size:28px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+h2 .n{background:var(--orange);color:var(--dark);font-size:14px;font-weight:900;border-radius:6px;padding:2px 8px}
+.lead{color:var(--muted);margin-bottom:18px}
+h3{font-size:19px;font-weight:700;margin:18px 0 8px}
+p+p{margin-top:10px}
+ul.clean{list-style:none}
+ul.clean li{padding-left:18px;position:relative;margin:6px 0}
+ul.clean li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;background:var(--orange);border-radius:2px}
+.card{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:14px;padding:20px 22px;position:relative;overflow:hidden}
+.card.stripe::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc,var(--orange))}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.card .k{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);font-weight:700;font-family:'Barlow Condensed',sans-serif}
+.card p,.card li{color:#c9d3dd;font-size:14px}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th{background:var(--navy);color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;text-align:left;padding:10px 14px}
+td{padding:10px 14px;border-top:1px solid var(--line);color:#c9d3dd;vertical-align:top}
+td:first-child{color:var(--text);font-weight:600}
+.pill{display:inline-block;font-size:11px;font-weight:800;padding:2px 9px;border-radius:10px;letter-spacing:.8px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+.p-must{background:rgba(255,153,0,.18);color:var(--orange)}
+.p-should{background:rgba(55,169,245,.16);color:var(--c-driver)}
+.p-could{background:rgba(136,153,170,.16);color:var(--muted)}
+.p-done{background:rgba(46,204,113,.16);color:var(--c-receiving)}
+.callout{border-left:4px solid var(--orange);background:rgba(255,153,0,.07);padding:14px 18px;border-radius:0 10px 10px 0;color:#d8dee6}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow .node{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--sc,var(--orange));border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600}
+.flow .arr{color:var(--orange);font-weight:900}
+.flow .gw{width:30px;height:30px;transform:rotate(45deg);border:2px solid var(--c-slam);display:inline-flex;align-items:center;justify-content:center;border-radius:4px}
+.flow .gw span{transform:rotate(-45deg);font-size:12px;color:var(--c-slam);font-weight:900}
+footer{border-top:1px solid var(--line);padding:24px 28px;color:var(--muted);font-size:13px;text-align:center}
+@media print{#header{position:static}body{background-image:none}}
+
+.frame{background:#0a0e14;border:1px solid rgba(255,153,0,.35);border-radius:14px;overflow:hidden;position:relative}
+.frame .bar{height:26px;background:var(--navy);display:flex;align-items:center;gap:6px;padding:0 10px}
+.frame .bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.frame .bar em{margin-left:10px;font-style:normal;font-size:11px;color:var(--muted)}
+.wf{position:relative;padding:0}
+.box{border:1.5px dashed rgba(136,153,170,.45);border-radius:8px;color:var(--muted);font-size:11px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase}
+.solid{border-style:solid;border-color:rgba(255,153,0,.55);color:var(--orange)}
+.fill{background:rgba(255,153,0,.9);color:var(--dark);border:none;font-weight:800}
+.hdr{display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;border-bottom:2px solid var(--orange)}
+.hdr .logo{width:28px;height:28px;border-radius:6px}
+.hdr .grow{flex:1}
+.line{height:8px;border-radius:4px;background:rgba(136,153,170,.25)}
+.line.o{background:rgba(255,153,0,.6)}
+.x{position:relative;background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(136,153,170,.08) 10px 11px)}
+.anno{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--orange);color:var(--dark);font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;box-shadow:0 0 0 3px rgba(255,153,0,.25);z-index:3}
+.notes{counter-reset:n}
+.notes li{list-style:none;display:flex;gap:10px;margin:8px 0;font-size:14px;color:#c9d3dd}
+.notes li b{color:var(--text)}
+.notes li::before{counter-increment:n;content:counter(n);flex:0 0 22px;height:22px;border-radius:50%;background:var(--orange);color:var(--dark);font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif}
+.screen{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;align-items:start}
+@media(max-width:860px){.screen{grid-template-columns:1fr}}
+.wcard{width:92px;height:118px;border-radius:8px;border:1.5px solid rgba(136,153,170,.5);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.wcard .s{height:4px}
+.wcard .img{flex:1;margin:6px;border-radius:4px}
+.wcard .t{padding:0 6px 8px;display:flex;flex-direction:column;gap:4px}
+.dash{flex:1;border-top:2px dashed rgba(255,153,0,.5);min-width:10px}
+.diamond{width:26px;height:26px;transform:rotate(45deg);border:2px solid var(--c-slam);border-radius:4px;flex-shrink:0}
+.circle{width:30px;height:30px;border-radius:50%;flex-shrink:0}
+</style></head>
+<body>
+<header id="header"><div class="h-logo">📦</div><div class="h-wordmark">amazon <span>FC</span></div><div class="h-subtitle">Fulfillment Journey · Wireframes</div><div class="h-right"><a class="h-btn" href="prd.html">PRD</a><a class="h-btn active" href="wireframes.html">Wireframes</a><a class="h-btn" href="design-system.html">Design System</a><a class="h-btn" href="https://fulfillmentcenterjourney.com">Live Site ↗</a></div></header>
+<div class="wrap">
+<div class="hero">
+  <div class="eyebrow">Wireframes · Low Fidelity</div>
+  <h1>Screen Layouts for the <span>FC Journey</span></h1>
+  <p>Layout and interaction structure for the four main views. Dashed boxes are content areas, orange marks interactive elements, and numbered markers match the notes beside each screen.</p>
+  <div class="meta">
+    <div class="chip">Screens <b>4</b></div>
+    <div class="chip">Breakpoints <b>Desktop · Mobile (&lt;600px)</b></div>
+    <div class="chip">Matches <b>v2.0 Live</b></div>
+  </div>
+</div>
+
+<!-- SCREEN 1 -->
+<section>
+<h2><span class="n">01</span>Flow View (Home)</h2>
+<p class="lead">The default landing view: a horizontal BPMN lane you can scroll or drag.</p>
+<div class="screen">
+<div class="frame"><div class="bar"><i></i><i></i><i></i><em>fulfillmentcenterjourney.com</em></div>
+<div class="wf" style="height:400px">
+  <div class="hdr"><div class="box fill logo"></div><div class="line" style="width:70px;background:#fff"></div><div class="line" style="width:140px"></div><div class="grow"></div>
+    <div class="box fill" style="width:70px;height:20px;border-radius:10px;font-size:9px">Badge</div><div class="box solid" style="width:70px;height:22px;border-radius:11px;font-size:9px">Flow</div><div class="box" style="width:70px;height:22px;border-radius:11px;font-size:9px">Story</div></div>
+  <span class="anno" style="top:10px;left:300px">1</span>
+  <div class="x" style="position:absolute;inset:46px 0 70px 0"></div>
+  <div style="position:absolute;top:120px;left:14px;right:14px;display:flex;align-items:center;gap:6px">
+    <div class="circle" style="background:var(--c-start)"></div><div class="dash"></div>
+    <div class="wcard"><div class="s" style="background:var(--c-driver)"></div><div class="img box">IMG</div><div class="t"><div class="line o" style="width:30px;height:5px"></div><div class="line" style="width:60px;background:#fff"></div><div class="line" style="width:45px;height:5px"></div></div></div><div class="dash"></div>
+    <div class="wcard"><div class="s" style="background:var(--c-receiving)"></div><div class="img box">IMG</div><div class="t"><div class="line o" style="width:30px;height:5px"></div><div class="line" style="width:60px;background:#fff"></div><div class="line" style="width:45px;height:5px"></div></div></div><div class="dash"></div>
+    <div class="wcard"><div class="s" style="background:var(--c-water)"></div><div class="img box">IMG</div><div class="t"><div class="line o" style="width:30px;height:5px"></div><div class="line" style="width:60px;background:#fff"></div><div class="line" style="width:45px;height:5px"></div></div></div><div class="dash"></div>
+    <div class="diamond"></div><div class="dash"></div><span style="color:var(--orange);font-weight:900">→</span>
+  </div>
+  <span class="anno" style="top:104px;left:140px">2</span>
+  <span class="anno" style="top:150px;right:40px">3</span>
+  <div class="line" style="position:absolute;left:14px;right:14px;top:262px;height:2px;background:rgba(255,153,0,.35)"></div>
+  <div class="box" style="position:absolute;right:20px;top:280px;width:140px;height:24px;font-size:9px">Scroll hint →</div>
+  <span class="anno" style="top:278px;right:170px">4</span>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:62px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--surface)">
+    <div class="box" style="width:26px;height:26px;border-radius:50%">↺</div><div class="box" style="width:26px;height:26px;border-radius:50%">⏮</div><div class="box fill" style="width:38px;height:38px;border-radius:50%">▶</div><div class="box" style="width:26px;height:26px;border-radius:50%">⏭</div>
+    <div style="width:220px;display:flex;flex-direction:column;gap:5px"><div class="line" style="width:120px;margin:auto"></div><div class="line o" style="height:3px"></div></div>
+    <div class="box solid" style="width:28px;height:18px;font-size:9px">1×</div><div class="box fill" style="width:96px;height:28px;border-radius:14px;font-size:9px">Story Mode</div>
+  </div>
+  <span class="anno" style="bottom:46px;left:130px">5</span>
+</div></div>
+<ol class="notes">
+  <li><span><b>Header:</b> logo, wordmark, subtitle, Interactive badge, and Flow/Story toggles. Sticky, with an orange bottom rule.</span></li>
+  <li><span><b>Step card:</b> color stripe, role illustration, "Step N" label, title and role. Click to open the detail panel.</span></li>
+  <li><span><b>BPMN elements:</b> start event (circle), dashed sequence arrows, decision gateways (diamonds), end event.</span></li>
+  <li><span><b>Floor + hint:</b> a lane line under the cards with step labels; "Scroll →" hint on first load.</span></li>
+  <li><span><b>Playbar:</b> restart, prev, play/pause, next, progress label and bar, speed toggle, Story Mode button.</span></li>
+</ol>
+</div>
+</section>
+
+<!-- SCREEN 2 -->
+<section>
+<h2><span class="n">02</span>Step Detail Panel</h2>
+<p class="lead">Opens when a step card is clicked. The flow stays visible but dimmed behind it.</p>
+<div class="screen">
+<div class="frame"><div class="bar"><i></i><i></i><i></i><em>Flow View · Receiving selected</em></div>
+<div class="wf" style="height:400px">
+  <div class="x" style="position:absolute;inset:0;opacity:.5"></div>
+  <div style="position:absolute;top:16px;bottom:16px;right:16px;width:58%;background:var(--surface);border:1px solid rgba(255,153,0,.4);border-radius:12px;overflow:hidden">
+    <div style="height:4px;background:var(--c-receiving)"></div>
+    <div class="box" style="position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%">✕</div>
+    <span class="anno" style="top:8px;right:42px">5</span>
+    <div class="box x" style="margin:12px;height:110px">Scene: env + character + equipment</div>
+    <span class="anno" style="top:20px;left:20px">1</span>
+    <div style="padding:0 14px;display:flex;flex-direction:column;gap:7px">
+      <div class="box solid" style="width:60px;height:16px;font-size:8px;border-radius:8px">Step 2</div>
+      <div class="line" style="width:60%;height:12px;background:#fff"></div>
+      <div class="line o" style="width:40%"></div>
+      <div class="line"></div><div class="line" style="width:85%"></div>
+      <span class="anno" style="top:172px;left:200px">2</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px"><div class="box" style="width:60px;height:18px;border-radius:9px;font-size:8px">Tool</div><div class="box" style="width:60px;height:18px;border-radius:9px;font-size:8px">Tool</div><div class="box" style="width:60px;height:18px;border-radius:9px;font-size:8px">Tool</div></div>
+      <span class="anno" style="top:248px;left:220px">3</span>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:6px">
+        <div class="box solid" style="height:38px;font-size:9px">R</div><div class="box solid" style="height:38px;font-size:9px">A</div><div class="box solid" style="height:38px;font-size:9px">C</div><div class="box solid" style="height:38px;font-size:9px">I</div></div>
+      <span class="anno" style="top:290px;left:-6px">4</span>
+    </div>
+  </div>
+</div></div>
+<ol class="notes">
+  <li><span><b>Scene header:</b> layered environment, role character and equipment art for the step.</span></li>
+  <li><span><b>Info block:</b> step tag, title, role, and a 1–2 sentence description.</span></li>
+  <li><span><b>Tools &amp; collaborators:</b> pill chips that wrap on small screens.</span></li>
+  <li><span><b>RACI grid:</b> Responsible, Accountable, Consulted, Informed. Hidden when a step has no RACI data.</span></li>
+  <li><span><b>Close:</b> ✕ button, Esc key, or a click outside returns to the flow.</span></li>
+</ol>
+</div>
+</section>
+
+<!-- SCREEN 3 -->
+<section>
+<h2><span class="n">03</span>Story Mode</h2>
+<p class="lead">A full-screen guided walkthrough, one step at a time.</p>
+<div class="screen">
+<div class="frame"><div class="bar"><i></i><i></i><i></i><em>Story Mode · Step 5 of 9</em></div>
+<div class="wf" style="height:400px;background:radial-gradient(circle at 50% 40%,rgba(255,153,0,.08),transparent 60%)">
+  <div class="box solid" style="position:absolute;top:14px;left:16px;width:120px;height:22px;border-radius:11px;font-size:9px">✦ Story Mode</div>
+  <div class="box" style="position:absolute;top:14px;right:16px;width:26px;height:26px;border-radius:50%">✕</div>
+  <span class="anno" style="top:12px;left:142px">1</span>
+  <div style="position:absolute;top:52px;left:50%;transform:translateX(-50%);width:68%;height:270px;background:var(--surface);border:1px solid rgba(255,153,0,.4);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr">
+    <div class="box x" style="margin:12px;border-radius:10px">Character + equipment</div>
+    <div style="padding:16px 14px;display:flex;flex-direction:column;gap:8px">
+      <div class="box solid" style="width:70px;height:16px;font-size:8px;border-radius:8px">Step 5</div>
+      <div class="line" style="width:80%;height:12px;background:#fff"></div>
+      <div class="line o" style="width:55%"></div>
+      <div class="box" style="height:22px;font-size:8px">Action line</div>
+      <div class="line"></div><div class="line" style="width:90%"></div><div class="line" style="width:70%"></div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap"><div class="box" style="width:50px;height:16px;border-radius:8px;font-size:7px">Tool</div><div class="box" style="width:50px;height:16px;border-radius:8px;font-size:7px">Tool</div></div>
+    </div>
+  </div>
+  <span class="anno" style="top:60px;left:20%">2</span>
+  <span class="anno" style="top:60px;right:20%">3</span>
+  <div style="position:absolute;bottom:22px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:14px">
+    <div class="box" style="width:80px;height:28px;border-radius:14px;font-size:9px">← Prev</div>
+    <div style="display:flex;gap:5px">
+      <i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:18px;height:7px;border-radius:4px;background:var(--orange)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i><i style="width:7px;height:7px;border-radius:50%;background:rgba(136,153,170,.4)"></i></div>
+    <div class="box fill" style="width:80px;height:28px;border-radius:14px;font-size:9px">Next →</div>
+  </div>
+  <span class="anno" style="bottom:20px;left:24%">4</span>
+</div></div>
+<ol class="notes">
+  <li><span><b>Overlay chrome:</b> Story Mode badge and close button over a Three.js background.</span></li>
+  <li><span><b>Visual half:</b> the role character with its step equipment and environment.</span></li>
+  <li><span><b>Narrative half:</b> step badge, title, role, action line ("Grabbing items guided by pick-to-light"), description and tools.</span></li>
+  <li><span><b>Navigation:</b> Prev/Next buttons, progress dots (current step stretched in orange) and arrow keys.</span></li>
+</ol>
+</div>
+</section>
+
+<!-- SCREEN 4 -->
+<section>
+<h2><span class="n">04</span>Mobile (&lt; 600px)</h2>
+<p class="lead">Same structure in a single column, built for touch.</p>
+<div class="screen">
+<div style="display:flex;gap:22px;justify-content:center;flex-wrap:wrap">
+  <div class="frame" style="width:220px;border-radius:24px">
+    <div class="wf" style="height:420px">
+      <div class="hdr" style="height:42px;padding:0 10px"><div class="box fill logo" style="width:24px;height:24px"></div><div class="line" style="width:60px;background:#fff"></div><div class="grow"></div><div class="box solid" style="width:46px;height:20px;border-radius:10px;font-size:8px">Story</div></div>
+      <span class="anno" style="top:8px;left:100px">1</span>
+      <div style="position:absolute;top:80px;left:16px;display:flex;gap:8px;align-items:center">
+        <div class="wcard" style="width:120px;height:160px"><div class="s" style="background:var(--c-picker)"></div><div class="img box">IMG</div><div class="t"><div class="line o" style="width:34px;height:5px"></div><div class="line" style="width:80px;background:#fff"></div><div class="line" style="width:56px;height:5px"></div></div></div>
+        <div class="dash" style="width:30px;flex:none"></div>
+        <div class="wcard" style="width:120px;height:160px;opacity:.5"><div class="s" style="background:var(--c-packer)"></div><div class="img box">IMG</div></div>
+      </div>
+      <span class="anno" style="top:70px;left:8px">2</span>
+      <div class="box" style="position:absolute;top:260px;left:16px;right:16px;height:24px;font-size:9px">← Swipe to move →</div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:58px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:8px;background:var(--surface)">
+        <div class="box" style="width:26px;height:26px;border-radius:50%">⏮</div><div class="box fill" style="width:38px;height:38px;border-radius:50%">▶</div><div class="box" style="width:26px;height:26px;border-radius:50%">⏭</div><div class="box solid" style="width:26px;height:18px;font-size:8px">1×</div></div>
+      <span class="anno" style="bottom:40px;right:16px">3</span>
+    </div>
+  </div>
+  <div class="frame" style="width:220px;border-radius:24px">
+    <div class="wf" style="height:420px">
+      <div class="x" style="position:absolute;inset:0;opacity:.4"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:300px;background:var(--surface);border-top:2px solid var(--orange);border-radius:18px 18px 0 0;padding:12px;display:flex;flex-direction:column;gap:7px">
+        <div style="width:40px;height:4px;border-radius:2px;background:rgba(136,153,170,.5);margin:0 auto 4px"></div>
+        <div class="box x" style="height:80px">Scene</div>
+        <div class="line" style="width:70%;height:11px;background:#fff"></div><div class="line o" style="width:45%"></div><div class="line"></div><div class="line" style="width:80%"></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:4px"><div class="box solid" style="height:30px;font-size:8px">R</div><div class="box solid" style="height:30px;font-size:8px">A</div><div class="box solid" style="height:30px;font-size:8px">C</div><div class="box solid" style="height:30px;font-size:8px">I</div></div>
+      </div>
+      <span class="anno" style="top:112px;right:12px">4</span>
+    </div>
+  </div>
+</div>
+<ol class="notes">
+  <li><span><b>Compact header:</b> the subtitle is hidden and Story Mode stays as the main action.</span></li>
+  <li><span><b>Swipe flow:</b> one large card in focus, with the next card peeking in from the edge.</span></li>
+  <li><span><b>Thumb playbar:</b> pinned to the bottom with large tap targets (44px+).</span></li>
+  <li><span><b>Bottom sheet:</b> the detail panel slides up from the bottom; swipe down or tap outside to close.</span></li>
+</ol>
+</div>
+</section>
+
+<section>
+<h2><span class="n">05</span>Interaction Flow</h2>
+<div class="flow">
+  <div class="node" style="--sc:var(--c-start)">Land on Flow View</div><span class="arr">→</span>
+  <div class="node">Scroll / drag lane</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-receiving)">Click step card</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-stower)">Detail Panel</div><span class="arr">→</span>
+  <div class="node">Close</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--orange)">▶ Play / Story Mode</div><span class="arr">→</span>
+  <div class="node" style="--sc:var(--c-problem)">■ Package Shipped</div>
+</div>
+</section>
+</div>
+<footer>Interactive BPMN Website: Amazon FC · Wireframes · Educational project, not affiliated with Amazon · <a href="https://fulfillmentcenterjourney.com">fulfillmentcenterjourney.com</a></footer>
+</body></html>
