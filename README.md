@@ -6,6 +6,10 @@
 
 **Live site:** [fulfillmentcenterjourney.com](https://fulfillmentcenterjourney.com)
 
+[![Amazon FC Fulfillment Journey dashboard](assets/amazon-fc-fulfillment-dashboard.png)](https://fulfillmentcenterjourney.com)
+
+*Flow View of the live site: each step card shows the role in the FC workflow. Click the image to open the site.*
+
 ---
 
 ## Current Progress (October 3, 2026)
@@ -61,7 +65,8 @@ extern-project-308-amazon-fc/
 ├── 05_chain_commands/ # Step-by-step pipeline instructions
 ├── 06_projects/       # One folder per project
 ├── 07_templates_master/ # Master templates for new projects
-└── site/              # Live Amazon FC Fulfillment Journey site (index.html)
+├── site/              # Live Amazon FC Fulfillment Journey site (index.html)
+└── assets/            # Screenshots and images
 ```
 
 ---
