@@ -33,10 +33,15 @@ Truck Driver → Receiving → Water Spider → Stower → Picker → Packer →
 | AI-assisted building | Structured prompting with ChatGPT, Claude, and Perplexity |
 
 ## Product docs
-Same design language as the live site. Download a file and open it in a browser:
-- [PRD](docs/prd.html): problem, goals, users, requirements, metrics, milestones
-- [Wireframes](docs/wireframes.html): Flow View, Step Detail Panel, Story Mode, Mobile
-- [Design System](docs/design-system.html): colors, type, components, spacing, usage rules
+Same design language as the live site:
+
+| Document | What's inside |
+|---|---|
+| [PRD](docs/prd.pdf) | Problem, goals, users, requirements, metrics, milestones |
+| [Wireframes](docs/wireframes.pdf) | Flow View, Step Detail Panel, Story Mode, Mobile |
+| [Design System](docs/design-system.pdf) | Colors, type, components, spacing, usage rules |
+
+HTML versions of each are in `docs/`.
 
 ## Repository structure
 ```
