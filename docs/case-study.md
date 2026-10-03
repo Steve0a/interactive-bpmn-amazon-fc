@@ -41,8 +41,8 @@ The dashboard shows:
   4. Refinement 3: Nodes unlocked for drag-and-drop interaction
 
 ### Phase 4 — Saving to GitHub
-- Uploaded all project files to `github.com/Steve0a/extern-project-308-amazon-fc`
-- This project file saved under `06_projects/`
+- Uploaded all project files to `github.com/Steve0a/interactive-bpmn-amazon-fc`
+- This project file saved under `docs/`
 
 ---
 
@@ -83,6 +83,6 @@ The dashboard shows:
 ---
 
 ## Related Files
-- `00_meta/AGENT_PLAN.md` — overall system plan
-- `05_chain_commands/CHAIN_full_pipeline.md` — chain commands that run this workflow
-- `07_templates_master/MASTER_workflow_template.md` — reusable template for new projects
+- `docs/workflow-system/AGENT_PLAN.md` — overall system plan
+- `docs/workflow-system/CHAIN_full_pipeline.md` — chain commands that run this workflow
+- `docs/workflow-system/MASTER_workflow_template.md` — reusable template for new projects
