@@ -2,7 +2,8 @@
 
 ## Project Overview
 **Project Name:** Amazon Fulfillment Center Interactive BPMN Workflow Dashboard
-**Status:** Completed (v1.0)
+**Status:** Live (v2.0)
+**Live Site:** https://fulfillmentcenterjourney.com
 **Built Using:** Claude AI (artifact), HTML, CSS, JavaScript
 **Stored At:** Claude AI conversation + GitHub repo
 
@@ -40,8 +41,16 @@ The dashboard shows:
   4. Refinement 3: Nodes unlocked for drag-and-drop interaction
 
 ### Phase 4 — Saving to GitHub
-- Uploaded all project files to `github.com/Steve0a/my-ai-workflow-system`
+- Uploaded all project files to `github.com/Steve0a/extern-project-308-amazon-fc`
 - This project file saved under `06_projects/`
+
+---
+
+### Phase 5 — Publishing (October 3, 2026)
+- Added the Flow View, Story Mode, and a 3D warehouse scene (Three.js)
+- Uploaded the single `index.html` to Cloudflare Workers (static assets)
+- Registered `fulfillmentcenterjourney.com` on Cloudflare and connected the root and `www.` domains
+- Saved the live build in `site/index.html`
 
 ---
 

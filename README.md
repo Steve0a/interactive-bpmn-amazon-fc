@@ -1,8 +1,31 @@
-# My AI Workflow System
+# Extern Project 308: Amazon Fulfillment Center
 
-**Owner:** Steve0a | **Created:** March 2026 | **Status:** Active
+**Owner:** Steve0a | **Started:** March 2026 | **Status:** Active
 
-> A personal, reusable 5-agent pipeline for building AI-powered projects — from idea to published output.
+> Extern Project 308 work on Amazon Fulfillment Center (FC) operations and worker feedback, plus the reusable AI workflow I use to build each deliverable.
+
+**Live site:** [fulfillmentcenterjourney.com](https://fulfillmentcenterjourney.com)
+
+---
+
+## Current Progress (October 3, 2026)
+
+| Item | Status |
+|---|---|
+| Interactive Amazon FC Fulfillment Journey site (`site/index.html`) | Done |
+| Deployed on Cloudflare Workers (`amazonfcjourney.steveoamo960.workers.dev`) | Done |
+| Custom domain `fulfillmentcenterjourney.com` (+ `www.`) connected | Done |
+| Worker-feedback analysis: 124 Glassdoor reviews + 8 YouTube worker videos | In progress |
+| Themes: Pay & Benefits, Schedule & Physical Workload (priority), Management & Growth | In progress |
+| Project 4: root-cause (5 Whys) and recommendation pitch | In progress |
+
+### The live site
+- **Flow View:** each FC step as a card with the role, its tasks, tools, who it works with, and a RACI breakdown
+- **Story Mode:** guided walkthrough with play/pause, previous/next, and speed controls
+- **3D warehouse scene:** built with Three.js
+- **Roles:** Truck Driver → Receiving → Water Spider → Stower → Picker → Packer → SLAM → Shipping → Delivery Driver, with Problem Solver across the flow
+
+Run locally: open `site/index.html` in any browser. No build step needed.
 
 ---
 
@@ -29,7 +52,7 @@ Think of it like a recipe book. The recipe stays the same. You just swap the ing
 ## Folder Structure
 
 ```
-my-ai-workflow-system/
+extern-project-308-amazon-fc/
 ├── 00_meta/           # What this system is
 ├── 01_memory/         # Who I am, preferences, project history
 ├── 02_skills/         # How-to guides for specific techniques
@@ -37,7 +60,8 @@ my-ai-workflow-system/
 ├── 04_sop_outputs/    # Final published content
 ├── 05_chain_commands/ # Step-by-step pipeline instructions
 ├── 06_projects/       # One folder per project
-└── 07_templates_master/ # Master templates for new projects
+├── 07_templates_master/ # Master templates for new projects
+└── site/              # Live Amazon FC Fulfillment Journey site (index.html)
 ```
 
 ---
@@ -48,7 +72,9 @@ my-ai-workflow-system/
 
 **Tools used:** Perplexity (context) → ChatGPT (JSON prompt) → Claude (build + refine)
 
-**Folder:** `06_projects/amazon_bpmn/`
+**Folder:** `06_projects/` (project notes) and `site/` (live build)
+
+**Live:** https://fulfillmentcenterjourney.com
 
 ---
 
@@ -66,5 +92,7 @@ my-ai-workflow-system/
 4. Done — your output + SOP are both saved
 
 ---
+
+*Educational project for Extern Project 308. Not affiliated with or endorsed by Amazon.*
 
 *Built by Steve0a | Park University Data Analytics*
